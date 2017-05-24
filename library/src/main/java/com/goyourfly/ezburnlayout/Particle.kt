@@ -65,11 +65,15 @@ open class Particle{
 
     }
 
-    private fun calculate(){
-        val useTime = System.currentTimeMillis()/1000.toDouble() - startTime
+    private fun calculate():Boolean{
+        val useTime = getCostTime();
+        "UseTime:$useTime".log()
+        if(useTime < 0)
+            return false
+
         if(useTime > life){
             alive = false
-            return
+            return false
         }
 
         currentPosition.x = position.x + (speed.x * useTime + acceleration.x * useTime * useTime / 2).toInt()
@@ -78,13 +82,14 @@ open class Particle{
 
         "Time:${System.currentTimeMillis()/1000.toDouble() - latestTime},CurrentPosition:$currentPosition".log()
         latestTime = System.currentTimeMillis()/1000.toDouble();
+        return true
     }
 
     fun onFrame(canvas:Canvas?){
-        calculate()
-        if(alive) onDraw(canvas,currentPosition,currentSize)
+        if(calculate()) onDraw(canvas,currentPosition,currentSize)
     }
 
+    fun getCostTime():Double = System.currentTimeMillis()/1000.toDouble() - startTime - startDelay
 
     /**
      * 子类应该重写这个方法

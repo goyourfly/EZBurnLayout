@@ -22,26 +22,23 @@ class EZBurnLayout : FrameLayout {
     val particleFactory = ParticleFactory()
 
     fun initConfig(){
-//        circleParticle.position = PointF(200.0F,200F)
-//        circleParticle.life = 10F
-//        circleParticle.acceleration = PointF(40F,-200F)
-//        circleParticle.speed = PointF(100F,500F)
-//        circleParticle.startSize = 20F
-//        circleParticle.sizeAcceleration = 20F
 
 
-        particleFactory.rangeOfLifeFrom = 1F
-        particleFactory.rangeOfLifeTo = 3F
-        particleFactory.rangeOfAccelerationFrom = PointF(-100F,-100F)
-        particleFactory.rangeOfAccelerationTo = PointF(100F,100F)
-        particleFactory.rangeOfPositionFrom = PointF(600F,800F)
-        particleFactory.rangeOfPositionTo = PointF(600F,800F)
-        particleFactory.rangeOfSpeedFrom = PointF(-400F,-400F)
-        particleFactory.rangeOfSpeedTo = PointF(400F,400F)
-        particleFactory.rangeOfStartSizeFrom = 20F
-        particleFactory.rangeOfStartSizeFrom = 10F
-        particleFactory.rangeOfSizeAccelerationFrom = 2F
-        particleFactory.rangeOfSizeAccelerationTo = 10F
+        particleFactory.rangeOfLife.from = 0F
+        particleFactory.rangeOfLife.to = 1.5F
+        particleFactory.rangeOfStartDelay.from = 0F
+        particleFactory.rangeOfStartDelay.to = 1.5F
+        particleFactory.rangeOfAcceleration.from = PointF(50F,10F)
+        particleFactory.rangeOfAcceleration.to = PointF(100F,100F)
+        particleFactory.rangeOfPosition.from = PointF(600F,400F)
+        particleFactory.rangeOfPosition.to = PointF(600F,800F)
+        particleFactory.rangeOfSpeed.from = PointF(200F,-400F)
+        particleFactory.rangeOfSpeed.to = PointF(400F,-600F)
+        particleFactory.rangeOfStartSize.from = 10F
+        particleFactory.rangeOfStartSize.to = 20F
+        particleFactory.rangeOfSizeAcceleration.from = -2F
+        particleFactory.rangeOfSizeAcceleration.to = -10F
+        particleFactory.maxParticle = 100
     }
 
 
@@ -49,6 +46,8 @@ class EZBurnLayout : FrameLayout {
     override fun dispatchDraw(canvas: Canvas?) {
         super.dispatchDraw(canvas)
         particleFactory.onDraw(canvas)
+        particleFactory.rangeOfPosition.from.x -= 1
+        particleFactory.rangeOfPosition.to.x -= 1
         invalidate()
     }
 

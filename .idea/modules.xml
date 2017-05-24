@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EZBurnLayout.iml" filepath="$PROJECT_DIR$/EZBurnLayout.iml" />
+      <module fileurl="file://E:\Project\EZBurnLayout\EZBurnLayout.iml" filepath="E:\Project\EZBurnLayout\EZBurnLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Project\EZBurnLayout\app\app.iml" filepath="E:\Project\EZBurnLayout\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://E:\Project\EZBurnLayout\library\library.iml" filepath="E:\Project\EZBurnLayout\library\library.iml" />
     </modules>
   </component>
 </project>

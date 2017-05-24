@@ -9,24 +9,19 @@ import java.util.*
  */
 
 class ParticleFactory{
-    var rangeOfPositionFrom:PointF = PointF()
-    var rangeOfPositionTo:PointF = PointF()
-    var rangeOfAccelerationFrom:PointF = PointF()
-    var rangeOfAccelerationTo:PointF = PointF()
-    var rangeOfSpeedFrom:PointF = PointF()
-    var rangeOfSpeedTo:PointF = PointF()
-    var rangeOfStartSizeFrom:Float = 0F
-    var rangeOfStartSizeTo:Float = 0F
-    var rangeOfSizeAccelerationFrom:Float = 0F
-    var rangeOfSizeAccelerationTo:Float = 0F
-    var rangeOfLifeFrom = 0F
-    var rangeOfLifeTo = 0F
+    val rangeOfPosition = Range<PointF>(PointF(),PointF())
+    val rangeOfAcceleration = Range<PointF>(PointF(),PointF())
+    val rangeOfSpeed = Range<PointF>(PointF(), PointF())
+    val rangeOfStartSize = Range<Float>(0F,0F)
+    val rangeOfSizeAcceleration = Range<Float>(0F,0F)
+    val rangeOfLife = Range<Float>(0F,0F)
+    val rangeOfStartDelay = Range<Float>(0F,0F)
 
     var duration = 0L
     var maxParticle = 50
 
-    var particles = mutableListOf<Particle>()
-    var waitDeleteParticles = mutableListOf<Particle>()
+    val particles = mutableListOf<Particle>()
+    val waitDeleteParticles = mutableListOf<Particle>()
 
     val random = Random()
 
@@ -60,12 +55,13 @@ class ParticleFactory{
 
     fun generateParticle():Particle{
         val particle = CircleParticle()
-        particle.position = PointF(nextFloat(rangeOfPositionFrom.x,rangeOfPositionTo.x),nextFloat(rangeOfPositionFrom.y,rangeOfPositionTo.y))
-        particle.speed = PointF(nextFloat(rangeOfSpeedFrom.x,rangeOfSpeedTo.x),nextFloat(rangeOfSpeedFrom.y,rangeOfSpeedTo.y))
-        particle.acceleration = PointF(nextFloat(rangeOfAccelerationFrom.x,rangeOfAccelerationTo.x),nextFloat(rangeOfAccelerationFrom.y,rangeOfAccelerationTo.y))
-        particle.startSize = nextFloat(rangeOfStartSizeFrom,rangeOfStartSizeTo)
-        particle.sizeAcceleration = nextFloat(rangeOfSizeAccelerationFrom,rangeOfSizeAccelerationTo)
-        particle.life = nextFloat(rangeOfLifeFrom,rangeOfLifeTo)
+        particle.position = PointF(nextFloat(rangeOfPosition.from.x,rangeOfPosition.to.x),nextFloat(rangeOfPosition.from.y,rangeOfPosition.to.y))
+        particle.speed = PointF(nextFloat(rangeOfSpeed.from.x,rangeOfSpeed.to.x),nextFloat(rangeOfSpeed.from.y,rangeOfSpeed.to.y))
+        particle.acceleration = PointF(nextFloat(rangeOfAcceleration.from.x,rangeOfAcceleration.to.x),nextFloat(rangeOfAcceleration.from.y,rangeOfAcceleration.to.y))
+        particle.startSize = nextFloat(rangeOfStartSize.from,rangeOfStartSize.to)
+        particle.sizeAcceleration = nextFloat(rangeOfSizeAcceleration.from,rangeOfSizeAcceleration.to)
+        particle.life = nextFloat(rangeOfLife.from,rangeOfLife.to)
+        particle.startDelay = nextFloat(rangeOfStartDelay.from,rangeOfStartDelay.to)
         return particle
     }
 
