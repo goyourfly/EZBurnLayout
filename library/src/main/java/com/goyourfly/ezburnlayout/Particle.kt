@@ -85,6 +85,7 @@ open class Particle{
         if(alive) onDraw(canvas,currentPosition,currentSize)
     }
 
+
     /**
      * 子类应该重写这个方法
      */
